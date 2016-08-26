@@ -6,6 +6,7 @@ Please check the .h to see how to customize anything
 
 ###Demo
 There are some kinds of animation effects ready to be used.
+
 ![alt tag](http://i.imgur.com/DBnUaEq.gif) ![alt tag](http://i.imgur.com/qJ4z0QV.gif)
 ![alt tag](http://i.imgur.com/ofWbJPO.gif) ![alt tag](http://i.imgur.com/kGGAn4W.gif)
 ![alt tag](http://i.imgur.com/m5bRlwm.gif)
@@ -33,4 +34,5 @@ CYLaunchAnimateViewController *launchController = [[CYLaunchAnimateViewControlle
 ```
 
 You don't have to used the contentView with screen size. View with any size is OK! And the view will be set in the center of screen automatically.
+
 ![alt tag](http://i.imgur.com/zXdzlEs.gif)
