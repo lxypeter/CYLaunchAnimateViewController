@@ -16,22 +16,22 @@ Please check the animation effect enum in CYLaunchAnimateViewController.h.
 ###How to use
 The controller should be used in the AppDelegate.m:
 
-1. Import CYLaunchAnimateViewController.h
+- 1. Import CYLaunchAnimateViewController.h
 ```objc
-#import "CYLaunchAnimateViewController.h"
+  #import "CYLaunchAnimateViewController.h"
 ```
-2. Initialize a customized launch view.
+- 2. Initialize a customized launch view.
 ```objc
-//just an example
-UIView *launchView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-/*
-* launchView setting...
-*/
+  //just an example
+  UIView *launchView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+  /*
+  * launchView setting...
+  */
 ```
-3.  Initialize a CYLaunchAnimateViewController(Before the initialization, please make sure the keyWindow of application have been set.)
+- 3. Initialize a CYLaunchAnimateViewController(Before the initialization, please make sure the keyWindow of application have been set.)
 ```objc
-CYLaunchAnimateViewController *launchController = [[CYLaunchAnimateViewController alloc]initWithContentView:launchView animateType:CYLaunchAnimateTypePointZoomOut showSkipButton:YES];
-[launchController show];
+  CYLaunchAnimateViewController *launchController = [[CYLaunchAnimateViewController alloc]initWithContentView:launchView animateType:CYLaunchAnimateTypePointZoomOut showSkipButton:YES];
+  [launchController show];
 ```
 
 You don't have to used the contentView with screen size. View with any size is OK! And the view will be set in the center of screen automatically.
