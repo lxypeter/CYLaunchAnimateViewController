@@ -1,4 +1,4 @@
-#CYLaunchAnimateViewController
+CYLaunchAnimateViewController
 ======================
 A simple controller to make animate launch screen. It can be used as an introduction page or ad page when app is launched or reactived. It's extremely easy to use(Only two lines of code are required!).
 
@@ -15,23 +15,24 @@ Please check the animation effect enum in CYLaunchAnimateViewController.h.
 
 ###How to use
 The controller should be used in the AppDelegate.m:
+
 1. Import CYLaunchAnimateViewController.h
-```objc
-#import "CYLaunchAnimateViewController.h"
-```
+  ```objc
+  #import "CYLaunchAnimateViewController.h"
+  ```
 2. Initialize a customized launch view.
-```objc
-//just an example
-UIView *launchView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-/*
-* launchView setting...
-*/
-```
+  ```objc
+  //just an example
+  UIView *launchView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+  /*
+  * launchView setting...
+  */
+  ```
 3.  Initialize a CYLaunchAnimateViewController(Before the initialization, please make sure the keyWindow of application have been set.)
-```objc
-CYLaunchAnimateViewController *launchController = [[CYLaunchAnimateViewController alloc]initWithContentView:launchView animateType:CYLaunchAnimateTypePointZoomOut showSkipButton:YES];
-[launchController show];
-```
+  ```objc
+  CYLaunchAnimateViewController *launchController = [[CYLaunchAnimateViewController alloc]initWithContentView:launchView animateType:CYLaunchAnimateTypePointZoomOut showSkipButton:YES];
+  [launchController show];
+  ```
 
 You don't have to used the contentView with screen size. View with any size is OK! And the view will be set in the center of screen automatically.
 
