@@ -108,11 +108,7 @@ static const CGFloat kDefaultWaitDuration = 3.0;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    self.timePass = 0;
-    NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop]addTimer:timer forMode:NSDefaultRunLoopMode];
-    self.timer = timer;
-    [timer fire];
+    [self configureTimer];
 }
 
 - (void)configureSubViews{
@@ -127,6 +123,14 @@ static const CGFloat kDefaultWaitDuration = 3.0;
         [self.view addSubview:self.skipButton];
         [self.skipButton addTarget:self action:@selector(dismissAtOnce) forControlEvents:UIControlEventTouchUpInside];
     }
+}
+
+- (void)configureTimer{
+    self.timePass = 0.0;
+    NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop]addTimer:timer forMode:NSDefaultRunLoopMode];
+    self.timer = timer;
+    [timer fire];
 }
 
 #pragma mark - control method
