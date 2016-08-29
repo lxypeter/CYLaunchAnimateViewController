@@ -36,7 +36,7 @@
     [launchView addSubview:imageView];
     
     // init CYLaunchAnimateViewController
-    CYLaunchAnimateViewController *launchCtrl = [[CYLaunchAnimateViewController alloc]initWithContentView:launchView animateType:CYLaunchAnimateTypePointZoomOut showSkipButton:YES];
+    CYLaunchAnimateViewController *launchCtrl = [[CYLaunchAnimateViewController alloc]initWithContentView:launchView animateType:CYLaunchAnimateTypePointZoomOut2 showSkipButton:YES];
     [launchCtrl show];
     
     return YES;

@@ -170,7 +170,7 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             [self.view.layer addAnimation:groupAnimation forKey:nil];
             break;
         }
-        case CYLaunchAnimateTypePointZoomOut:{
+        case CYLaunchAnimateTypePointZoomOut1:{
             
             CGSize screenSize = [UIScreen mainScreen].bounds.size;
             
@@ -197,6 +197,40 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             
             break;
         }
+        case CYLaunchAnimateTypePointZoomOut2:{
+            
+            CAShapeLayer *maskLayer = [CAShapeLayer layer];
+            self.view.layer.mask = maskLayer;
+            
+            CGSize screenSize = [UIScreen mainScreen].bounds.size;
+            
+            CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"path"];
+            [keyFrameAnimation setDuration:_animateDuration];
+            keyFrameAnimation.delegate = self;
+            
+            UIBezierPath *pathOne = [UIBezierPath bezierPathWithRect:self.view.bounds];
+            UIBezierPath *pathOneCircle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:1.0 startAngle:0 endAngle:2 * M_PI clockwise:NO];
+            [pathOne appendPath:pathOneCircle];
+            
+            UIBezierPath *pathTwo = [UIBezierPath bezierPathWithRect:self.view.bounds];
+            UIBezierPath *pathTwoCircle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:screenSize.width/2*0.7 startAngle:0 endAngle:2 * M_PI clockwise:NO];
+            [pathTwo appendPath:pathTwoCircle];
+            
+            UIBezierPath *pathThree = [UIBezierPath bezierPathWithRect:self.view.bounds];
+            UIBezierPath *pathThreeCircle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:screenSize.width/2*0.5 startAngle:0 endAngle:2 * M_PI clockwise:NO];
+            [pathThree appendPath:pathThreeCircle];
+            
+            UIBezierPath *pathFour = [UIBezierPath bezierPathWithRect:self.view.bounds];
+            UIBezierPath *pathFourCircle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:hypot(screenSize.height, screenSize.width)/2 startAngle:0 endAngle:2 * M_PI clockwise:NO];
+            [pathFour appendPath:pathFourCircle];
+            
+            keyFrameAnimation.values = @[(__bridge id)(pathOne.CGPath),(__bridge id)(pathTwo.CGPath),(__bridge id)(pathThree.CGPath),(__bridge id)(pathFour.CGPath)];
+            keyFrameAnimation.keyTimes = @[@(0),@(0.3),@(0.6),@(1)];
+            
+            [maskLayer addAnimation:keyFrameAnimation forKey:nil];
+            
+            break;
+        }
         case CYLaunchAnimateTypePointZoomIn1:{
             CAShapeLayer *maskLayer = [CAShapeLayer layer];
             self.view.layer.mask = maskLayer;
@@ -206,18 +240,18 @@ static const CGFloat kDefaultWaitDuration = 3.0;
             CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"path"];
             [keyFrameAnimation setDuration:_animateDuration];
             keyFrameAnimation.delegate = self;
-
+            
             UIBezierPath *pathOne = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:hypot(screenSize.height, screenSize.width)/2 startAngle:0 endAngle:2 * M_PI clockwise:NO];
-
+            
             UIBezierPath *pathTwo = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:screenSize.width/2*0.5 startAngle:0 endAngle:2 * M_PI clockwise:NO];
-
-            UIBezierPath *pathThree = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:screenSize.width/2*0.6 startAngle:0 endAngle:2 * M_PI clockwise:NO];
-
+            
+            UIBezierPath *pathThree = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:screenSize.width/2*0.7 startAngle:0 endAngle:2 * M_PI clockwise:NO];
+            
             UIBezierPath *pathFour = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.view.center.x, self.view.center.y) radius:1 startAngle:0 endAngle:2 * M_PI clockwise:NO];
-
+            
             keyFrameAnimation.values = @[(__bridge id)(pathOne.CGPath),(__bridge id)(pathTwo.CGPath),(__bridge id)(pathThree.CGPath),(__bridge id)(pathFour.CGPath)];
             keyFrameAnimation.keyTimes = @[@(0),@(0.5),@(0.9),@(1)];
-
+            
             [maskLayer addAnimation:keyFrameAnimation forKey:nil];
             
             break;

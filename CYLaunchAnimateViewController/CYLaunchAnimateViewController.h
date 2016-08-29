@@ -14,7 +14,8 @@ typedef NS_ENUM(NSInteger, CYLaunchAnimateType){
     CYLaunchAnimateTypeFadeAndZoomIn,
     CYLaunchAnimateTypePointZoomIn1,
     CYLaunchAnimateTypePointZoomIn2,
-    CYLaunchAnimateTypePointZoomOut,
+    CYLaunchAnimateTypePointZoomOut1,
+    CYLaunchAnimateTypePointZoomOut2
 };
 
 typedef void(^CompleteBlock)();
